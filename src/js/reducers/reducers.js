@@ -4,14 +4,16 @@ const initialState = {
     { name: "reducerPromo", price: -20 },
     { name: "king5euro", price: -5 },
     { name: "kongtien", price: -10 }
-  ]
+  ],
+  searchvalue: {value: ''}
 };
 
 function rootReducer(state = initialState, action) {
   // console.log("rootReducer " + state);
   if (action.type === ADD_ARTICLE) {
     return Object.assign({}, state, {
-      promotions: zoekFunction(action.payload)
+      promotions: zoekFunction(action.payload),
+      searchvalue: {value: action.payload}
     });
   }
   return state;

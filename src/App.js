@@ -18,21 +18,21 @@ const PromotionGroup = ({ value, index }) => {
 class App1 extends Component {
   constructor(props) {
     super(props);
-    this.state = { promotions: [], searchvalue: { value: '' } }
-    this.initalPromos = [
-      { name: "AntwerpenStraffeStotenBIDTV", price: -20 },
-      { name: "king5euro", price: -5 },
-      { name: "kongtien", price: -10 }
-    ];
+    // this.state = { promotions: [], searchvalue: { value: '' } }
+    // this.initalPromos = [
+    //   { name: "AntwerpenStraffeStotenBIDTV", price: -20 },
+    //   { name: "king5euro", price: -5 },
+    //   { name: "kongtien", price: -10 }
+    // ];
 
     this.zoekFunction = this.zoekFunction.bind(this);
   }
 
-  componentDidMount() {
-    this.setState({
-      promotions: this.initalPromos
-    });
-  }
+  // componentDidMount() {
+    // this.setState({
+    //   promotions: this.initalPromos
+    // });
+  // }
 
   zoekFunction(text) {
     // var updatedList = this.initalPromos.filter(function(promo){
@@ -40,20 +40,22 @@ class App1 extends Component {
     // });
     this.props.zoekFunctionProps(text);
 
-    this.setState({
-      // promotions: updatedList,
-      searchvalue: { value: text }
-    });
+    // this.setState({
+    //   // promotions: updatedList,
+    //   searchvalue: { value: text }
+    // });
 
   }
 
   render() {
     // const elements = this.state.promotions;
     const elements = this.props.promotionsAsProps;
+    // const newLocal = this.state.searchvalue.value;
+    const searchText = this.props.searchvalue.value;
     return (
       <div className="App">
         mijn app
-        <Searchfield zoek={this.state.searchvalue.value} zoekFunctie={this.zoekFunction} />
+        <Searchfield zoek={searchText} zoekFunctie={this.zoekFunction} />
         <p>-</p>
 
         { 
@@ -75,6 +77,7 @@ function mapStateToProps(state){
   // console.log("mapStateToProps" + state);
   return {
       promotionsAsProps: state.promotions,
+      searchvalue: state.searchvalue
   }
 }
 
