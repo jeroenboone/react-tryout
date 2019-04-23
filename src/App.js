@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import Searchfield from './Searcfield';
+import Posts from './components/Posts';
 import { connect } from "react-redux";
-import {zoekFunctionActions} from './js/actions/actions'
+import { zoekFunctionActions } from './js/actions/actions'
 
 const PromotionGroup = ({ value, index }) => {
   return (
@@ -29,9 +30,9 @@ class App1 extends Component {
   }
 
   // componentDidMount() {
-    // this.setState({
-    //   promotions: this.initalPromos
-    // });
+  // this.setState({
+  //   promotions: this.initalPromos
+  // });
   // }
 
   zoekFunction(text) {
@@ -58,7 +59,7 @@ class App1 extends Component {
         <Searchfield zoek={searchText} zoekFunctie={this.zoekFunction} />
         <p>-</p>
 
-        { 
+        {
           elements.map((value, index) => {
             return <PromotionGroup key={index} index={index} value={value} />
           })
@@ -66,18 +67,18 @@ class App1 extends Component {
 
         <p>-</p>
 
-        {/* reduxVar {reduxVar} */}
+        <Posts />
 
       </div>
     );
   }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
   // console.log("mapStateToProps" + state);
   return {
-      promotionsAsProps: state.promotions,
-      searchvalue: state.searchvalue
+    promotionsAsProps: state.promotions,
+    searchvalue: state.searchvalue
   }
 }
 
